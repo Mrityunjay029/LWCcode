@@ -1,0 +1,14 @@
+<template>
+    <lightning-card
+    title="PRACTICE 5"
+    icon-name="standard:account">
+
+    <lightning-combobox 
+    title="Please search"
+    placeholder="Select a contact"
+    options={getoptions}
+    onchange={handleChange}
+    ></lightning-combobox>
+    <p>ID of selected record is : {value}</p>
+    </lightning-card>
+</template>

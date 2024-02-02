@@ -1,0 +1,24 @@
+<apex:page controller="MyCustomClass">
+    <h1 style="font-size:42px">
+        Welcome to my Page
+    </h1>
+    <apex:form >
+        <div>
+            <apex:outputText >Name</apex:outputText>
+            <apex:inputText value="{!customerName}" required="true" ></apex:inputText>
+        </div>
+        <div>
+            <apex:outputText >Company</apex:outputText>
+            <apex:inputText value="{!customerCompany}" required="true" ></apex:inputText>
+        </div>
+        <div>
+            <apex:outputText >Phone</apex:outputText>
+            <apex:inputText value="{!customerPhone}" ></apex:inputText>
+        </div>
+        <div>
+            <apex:outputText >Email</apex:outputText>
+            <apex:inputText value="{!customerEmail}" required="true" ></apex:inputText>
+        </div>
+        <apex:commandButton action="{!createLead}" value="Submit" />
+    </apex:form>
+</apex:page>

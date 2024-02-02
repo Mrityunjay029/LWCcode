@@ -1,0 +1,3 @@
+<aura:component implements="force:lightningQuickAction" >
+     <c:campaignAction aura:id="campaignAction"/>
+</aura:component>

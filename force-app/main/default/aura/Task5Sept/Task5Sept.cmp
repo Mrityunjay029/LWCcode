@@ -1,0 +1,98 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="Task5Sept">
+	<aura:attribute name="showDeleteModal" type="Boolean" default="false"/>
+    <aura:attribute name="deleteIndex" type="Integer" />
+    <!-- Modal Start -->
+    <aura:renderIf isTrue="{!v.showDeleteModal}">
+        <div aura:id="modalBackdrop" class="slds-backdrop slds-backdrop_open"></div>
+        <div class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Confirm Delete</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    Are you sure you want to delete this record?
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.closeModal}">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick="{!c.confirmDelete}">Delete</button>
+                </footer>
+            </div>
+        </div>
+    </aura:renderIf>
+    <!-- Modal End -->
+    
+    <aura:attribute name="accounts" type="Account[]" />
+    <aura:attribute name="accId" type="String" default=""/>
+    <aura:attribute name="contacts" type="Contact[]" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:card title="Account" iconName="standard:account">
+        <lightning:select name="accountSelect" value="{!v.accId}" onchange="{!c.handleChange}">
+            <option value="">-- Select Account --</option>
+            <aura:iteration items="{!v.accounts}" var="acc">
+                <option value="{!acc.Id}">{!acc.Name}</option>
+            </aura:iteration>
+        </lightning:select>
+    </lightning:card>
+    
+    <aura:renderIf isTrue="{!v.contacts.length > 0}">
+        <lightning:card title="Related Contacts" iconName="standard:contact">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.contacts}" var="contact" indexVar="index">
+                        <tr>
+                            <td>
+                                <aura:if isTrue="{!contact.editable}">
+                                    <lightning:input type="text" value="{!contact.FirstName}" />
+                                <aura:set attribute="else">
+                                    {!contact.FirstName}
+                                </aura:set>
+                                </aura:if>
+                            </td>
+                            <td>
+                                <aura:if isTrue="{!contact.editable}">
+                                    <lightning:input type="text" value="{!contact.LastName}" />
+                                <aura:set attribute="else">
+                                    {!contact.LastName}
+                                </aura:set>
+                                </aura:if>
+                            </td>
+                            <td>
+                                <aura:if isTrue="{!contact.editable}">
+                                    <lightning:input type="text" value="{!contact.Email}" />
+                                <aura:set attribute="else">
+                                    {!contact.Email}
+                                </aura:set>
+                                </aura:if>
+                            </td>
+                            <td>
+                                <aura:if isTrue="{!contact.editable}">
+                                    <lightning:input type="text" value="{!contact.Phone}" />
+                                <aura:set attribute="else">
+                                    {!contact.Phone}
+                                </aura:set>
+                                </aura:if>
+                            </td>
+                            <td>
+                                <lightning:buttonIcon iconName="utility:edit" variant="container" onclick="{!c.editContact}" name="{!index}"/>
+                                <lightning:buttonIcon iconName="utility:delete" variant="container" onclick="{!c.openModal}" name="{!index}"/>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+            <lightning:button label="Add Contact" onclick="{!c.addContact}" variant="brand"/>
+            <lightning:button label="Save" onclick="{!c.save}" variant="brand"/>
+        </lightning:card>
+    </aura:renderIf>
+</aura:component>

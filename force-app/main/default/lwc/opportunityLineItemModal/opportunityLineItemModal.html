@@ -1,0 +1,55 @@
+<template>
+    <div>
+        <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium">Related Opportunity Line Items to Opportunity</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium">
+                <lightning-accordion class="example-accordion" allow-multiple-sections-open  active-section-name={activeSections}>
+            <lightning-accordion-section name="A" label="Related Opportunity Line Items:">
+                <div class="slds-p-around_medium">
+                    <p class="slds-text-title_bold">Related Opportunity Line Items:</p>
+                    <lightning-button variant="success" label="Insert" onclick={handleClick}></lightning-button>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-text-title_caps">Name</th>
+                                <th class="slds-text-title_caps">Quantity</th>
+                                <th class="slds-text-title_caps">TotalPrice</th>
+                                <th class="slds-text-title_caps">UnitPrice</th>
+                                <th class="slds-text-title_caps">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={content} for:item="opl">
+                                <tr key={opl.Id}>
+                                    <td>{opl.Product2.Name}</td>
+                                    <td>{opl.Quantity}</td>
+                                    <td>{opl.TotalPrice}</td>
+                                    <td>{opl.UnitPrice}</td>
+                                    <td>
+                                        <lightning-record-edit-form
+                                           object-api-name="OpportunityLineItem"
+                                           record-id={opl.Id}
+                                           onsuccess={handleSuccess}
+                                           onsubmit={handleSubmit}
+                                           onerror={handleError}>
+                                        <lightning-input-field field-name="Amount__c" data-id={opl.Id}></lightning-input-field>
+                                        <div class="slds-m-top_medium">
+                                        <lightning-button type="submit" label="Update Amount" onclick={handleClick}></lightning-button>
+                                        </div>
+                                        </lightning-record-edit-form>
+                                    </td>
+                                    <td><lightning-button variant="brand" label="Delete" data-id={opl.Id} onclick={handleClick}></lightning-button></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-accordion-section>
+        </lightning-accordion>
+            </div>
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_brand" onclick={closeModal}>Close</button>
+            </footer>
+    </div>
+</template>

@@ -1,0 +1,20 @@
+<apex:page renderAs="pdf" controller="QuizPDFController" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false">
+    <html>
+        <head>
+            <style>
+                body { font-family: 'Arial, sans-serif'; }
+                .question { font-weight: bold; margin-bottom: 5px; }
+                .answer { margin-left: 15px; }
+            </style>
+        </head>
+        <body>
+            <h2>Questionnaire Responses</h2>
+
+            <apex:repeat value="{!quizQuestions}" var="question">
+                <div class="question">Q. {!question.Question__c}</div>
+                <div class="answer">Chosen Answer: {!question.Selected_Answer__c}</div>
+                <br/>
+            </apex:repeat>
+        </body>
+    </html>
+</apex:page>

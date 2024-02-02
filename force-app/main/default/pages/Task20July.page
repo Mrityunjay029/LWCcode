@@ -1,0 +1,25 @@
+<apex:page controller="AccountsWithRelatedContactsController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:outputLabel value="Select an Account:" />
+                <apex:selectList value="{!selectedAccountId}" size="1">
+                    <apex:selectOptions value="{!accountOptions}" />
+                    <apex:actionSupport event="onchange" action="{!fetchRelatedContacts}" reRender="contactsTable" />
+                </apex:selectList>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputPanel id="contactsTable">
+                    <apex:pageBlockTable value="{!relatedContacts}" var="contact">
+                        <apex:column >
+                            <apex:facet name="header">Contact Name</apex:facet>
+                            <apex:outputLink value="/{!contact.Id}">{!contact.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!contact.Email}" headerValue="Email" />
+                        <apex:column value="{!contact.Phone}" headerValue="Phone" />
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

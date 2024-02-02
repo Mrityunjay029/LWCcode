@@ -1,0 +1,23 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Create a Opportunity Line Item Record" icon-name="standard:account">
+        <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium">Create a Product2 Record</h2>
+            </header>
+            <div class="slds-p-around_medium">
+            <lightning-combobox
+                name="priceBookEntryCombo"
+                label="Select a Price Book Entry"
+                value={selectedPriceBookEntryId}
+                options={priceBookEntryOptions}
+                onchange={handleComboChange}>
+            </lightning-combobox>
+            <lightning-input label="Quantity" type="number" value={quantity} onchange={handleQuantityChange}></lightning-input>
+            <lightning-input label="Unit Price" type="number" value={unitPrice} onchange={handleUnitPriceChange}></lightning-input>
+            <lightning-input label="Amount" type="number" value={amount} onchange={handleAmountChange}></lightning-input>
+            <lightning-button label="Create Product" onclick={createOpl}></lightning-button>
+            </div>
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_brand" onclick={closeModal}>Close</button>
+            </footer>
+    </lightning-card>
+</template>

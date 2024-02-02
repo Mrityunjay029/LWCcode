@@ -1,0 +1,8 @@
+<template>
+    <lightning-card  variant="Brand"  title="Input Both Values" icon-name="standard:account">
+        <lightning-input type="text" variant="standard" value={x} label="label1" placeholder="Enter the value here" onchange={handleChange}></lightning-input>
+        <lightning-button variant="base" label="labelName" title="titleName" onclick={handleClick}></lightning-button>
+        <c-childcalculator result={result}></c-childcalculator>
+    </lightning-card>
+    
+</template>

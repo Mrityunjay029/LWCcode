@@ -1,0 +1,9 @@
+<template>
+        <div class="Parent">
+            <lightning-card title="Calculator Parent">
+        <input name="Num1" type="number" value={val1} onchange={handleChange}></input>
+        <input name="Num2" type="number" value={val2} onchange={handleChange}></input>
+        <c-calculator-child getvalue1 = {val1} getvalue2 = {val2}></c-calculator-child>
+            </lightning-card>
+        </div>
+</template>

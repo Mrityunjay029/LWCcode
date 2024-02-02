@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="SELECT ACCOUNTS">
+        <lightning-accordion class="example-accordion" allow-multiple-sections-open  active-section-name={activeSections}>
+            <lightning-accordion-section name="A" label="Accounts">
+                <div class="slds-p-around_medium">
+                    <p class="slds-text-title_bold">Accounts:</p>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-text-title_caps">Name</th>
+                                
+                                <th class="slds-text-title_caps">Email</th>
+                                <th class="slds-text-title_caps">Amount</th>
+                                <th class="slds-text-title_caps">Opp Line Item</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={accounts} for:item="account">
+                                <tr key={account.Id}>
+                                    <td>{account.Name}</td>
+                                    <td>{account.Email__c}</td>
+                                    <td>{account.AMOUNT__c}</td>
+                                    <td>{account.Number_of_Opp_Line_Items__c}</td>
+                                    <td><lightning-button variant="brand" data-id = {account.Id} label="Related Opp" onclick={handleClick}></lightning-button></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+</template>

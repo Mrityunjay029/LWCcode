@@ -1,0 +1,16 @@
+<template>
+    <lightning-card variant="Narrow" title="Conditional Render" icon-name="standard:account">
+        <lightning-button
+           variant="brand" 
+           label={handleLabel}
+           onclick={handleClick} 
+           title="Show">
+        </lightning-button>
+    </lightning-card>
+    
+    <template if:true={showTemplate}>
+        <lightning-card>
+            <p>RENDERED</p>
+        </lightning-card>
+    </template>
+</template>

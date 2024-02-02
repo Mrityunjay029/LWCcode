@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:registerEvent name="trnEvent" type="c:TrainingEvent"/>
+    
+    <aura:attribute name="mes" type="string"/>
+    
+    <lightning:input label="Enter Anything" value="{!v.mes}"></lightning:input>
+    <lightning:button label="Clickme" onclick="{!c.myAction}"/>
+</aura:component>

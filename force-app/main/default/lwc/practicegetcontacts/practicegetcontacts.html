@@ -1,0 +1,20 @@
+<template>
+    <lightning-card  variant="Brand"  title="Select An Account" icon-name="standard:account">
+           <lightning-combobox
+               name="progress"
+               label="Account List"
+               value={value}
+               placeholder="Select Account"
+               options={options}
+               onchange={handleChange} ></lightning-combobox>
+    </lightning-card>
+    <template if:true={temp}>
+        <lightning-card  variant="Brand"  title="List of Related Contacts" icon-name="standard:contact">
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={column}>
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+</template>

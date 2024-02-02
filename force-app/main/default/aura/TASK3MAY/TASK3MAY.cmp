@@ -1,0 +1,17 @@
+<aura:component controller="TASK3MAY" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="Fname" type="string" />
+    <aura:attribute name="Cdate" type="date" />
+    <aura:attribute name="stage" type = "string" />
+    <aura:attribute name="types" type = "string" />
+    <aura:attribute name="amount" type="Integer" />
+    
+    <lightning:card class="container slds-p-around_medium">
+        <span style="font-size : 20px" class="slds-m-bottom_medium">Create Opportunity: </span><br/><br/>
+        <lightning:input name = "fname" label="Enter Opp Name: " value="{!v.Fname}" required="true" onchange="{!c.raisetoast}" />
+        <lightning:input type="date" name="cdate" label="Required Close date field" required="true" value="{!v.Cdate}" onchange="{!c.raisetoast}" />
+        <lightning:input name="Type" label="Type" value="{!v.types}" />
+        <lightning:input name="stage" label="Stage" value="{!v.stage}" required="true" onchange="{!c.raisetoast}"/>
+        <lightning:button class="slds-m-top_medium" variant="success" label="Save" title="Save opportunity" onclick="{! c.handleClick }"/>
+        <lightning:button class="slds-m-top_medium" variant="Destructive" label="Clear" title="Clear Fields" onclick="{! c.clearFields}"/>
+    </lightning:card >
+</aura:component>

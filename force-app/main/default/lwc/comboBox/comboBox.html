@@ -1,0 +1,16 @@
+<template>
+    <lightning-card variant ="Narrow" title="Select any Record" icon-name="standard:account">
+    <lightning-combobox 
+    label="SELECT"
+    placeholder="SELECT A OBJECT"
+    options={getoptions}
+    onchange={handleChange}
+    >
+    </lightning-combobox>    
+    </lightning-card>
+
+
+        <lightning-card variant="Narrow" title="Selected Object">
+            <p>ID of Selected Record is {value}</p>
+        </lightning-card>
+</template>

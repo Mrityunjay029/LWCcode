@@ -1,0 +1,22 @@
+<template>
+    <lightning-card  variant="Brand"  title="Accounts" icon-name="standard:account">
+        <lightning-combobox
+            name="progress"
+            label="Account Selection"
+            value={selectedId}
+            placeholder="Select Account"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+            <template if:true={temp}>
+        <lightning-datatable
+            key-field="id"
+            data={getcon}
+            show-row-number-column
+            row-number-offset={rowOffset}
+            hide-checkbox-column
+            columns={getcolumns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </template>
+    </lightning-card>
+</template>

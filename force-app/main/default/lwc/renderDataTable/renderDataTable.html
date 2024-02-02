@@ -1,0 +1,19 @@
+<template>
+    <lightning-card>
+    <lightning-button
+       label={handleLabel}
+       variant="brand"
+       onclick={handleClick} 
+       title="Show">
+    </lightning-button>
+    </lightning-card>
+    <template if:true={ShowTemplate}>
+        <lightning-card>
+            <lightning-datatable
+            data={data}
+            columns={columns}
+            key-field="id">
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+</template>

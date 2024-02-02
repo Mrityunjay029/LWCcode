@@ -1,0 +1,11 @@
+.attachment-container {
+    display: inline-block;
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.attachment-button {
+    margin-left: 250px; /* Adjust margin as needed */
+}
+.p{
+	margin-left: 50px;
+}

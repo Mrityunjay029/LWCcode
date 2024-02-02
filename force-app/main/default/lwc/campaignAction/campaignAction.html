@@ -1,0 +1,52 @@
+<!-- this should be incapsulated in its own component, see https://developer.salesforce.com/docs/component-library/bundle/lightning-modal/documentation -->
+    <template>
+      
+      <lightning-modal-header label="Verify Addresses"></lightning-modal-header>
+      <div class="THIS.slds-modal__container">
+      <lightning-modal-body>
+        <div class="parent">
+        <div class="child1">
+            <h2>Owners ID</h2>
+            <p>{currentUserName}</p>
+            <br>
+            <h2>Number Of Contacts</h2>
+            <p>{numberofcontacts}</p>
+            
+        </div>
+        <div class="child2">
+            <h2>Name</h2>
+            <p>{recordName}</p>
+            <br>
+            <h2>Number of Leads</h2>
+            <p>{numberofleads}</p>
+            
+        </div>
+        </div>
+      </lightning-modal-body>
+    </div>
+      <lightning-modal-footer>
+        <lightning-button 
+            variant="brand"
+            label="Show the Contacts"
+            onclick={handleClick}>
+        </lightning-button>
+        <template if:true={toggle}>
+          <lightning-datatable
+            key-field="id"
+            data={data}
+            columns={col}
+          ></lightning-datatable>
+        </template>
+        <lightning-button 
+            variant="brand"
+            label="Show the Leads"
+            onclick={handleClick1}></lightning-button>
+            <template if:true={toggle1}>
+              <lightning-datatable
+                key-field="id"
+                data={data1}
+                columns={col1}
+              ></lightning-datatable>
+            </template>
+        </lightning-modal-footer>
+    </template>

@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="RECORD VIEW FORM" icon-name="standard:account">
+        <lightning-record-view-form record-id={recordID} object-api-name={objectAPI}>
+            <lightning-output-field field-name="Name"></lightning-output-field>
+            <lightning-output-field field-name="Industry"></lightning-output-field>
+            <lightning-output-field field-name="Phone"></lightning-output-field>
+            <lightning-output-field field-name="Website"></lightning-output-field>
+        </lightning-record-view-form>
+    </lightning-card>
+    <lightning-card title="RECORD EDIT FORM" icon-name="standard:account">
+        <lightning-record-form 
+        record-id={recordID}
+        mode="edit"
+        object-api-name={objectAPI}
+        layout-type="Full"
+        columns="2"
+        ></lightning-record-form>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<!-- createAccountLWC.html -->
+<template>
+    <lightning-card title="Create New Account">
+        <div class="slds-p-horizontal_medium slds-p-vertical_medium">
+            <lightning-input label="Account Name" value={accountName} onchange = {handleChange} required>
+            </lightning-input>
+            <lightning-combobox label="Industry" value={industry} placeholder="- Select Industry -" options={industryOptions} onchange = {createind} required>
+            </lightning-combobox>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Create" variant="brand" onclick={handleCreate}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

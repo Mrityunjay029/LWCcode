@@ -1,0 +1,21 @@
+<apex:page standardController="Account" extensions="QuizController">
+    <apex:form rendered="{!renderQuiz}">
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:outputText value="{!currentQuestion.Question__c}" label="" />
+                <br/>
+                <apex:selectRadio value="{!selectedAnswer}" layout="pageDirection">
+                    <apex:selectOptions value="{!answerOptions}" />
+                </apex:selectRadio>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!previous}" value="Previous" rendered="{!hasPreviousQuestions}" />
+                <apex:commandButton action="{!next}" value="Next" rendered="{!hasMoreQuestions}" />
+                <apex:commandButton action="{!finish}" value="Finish" rendered="{!noMoreQuestions}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputPanel rendered="{!NOT(renderQuiz)}">
+        <h1>{!message}</h1>
+    </apex:outputPanel>
+</apex:page>

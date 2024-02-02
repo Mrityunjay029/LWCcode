@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Account Opportunity Explorer">
+        <ul>
+            <template for:each={accounts} for:item="account">
+                <li key={account.Id} onclick={handleAccountClick}>
+                    {account.Name}
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+
+    <template if:true={selectedAccount}>
+        <lightning-card title="Opportunities">
+            <ul>
+                <template for:each={selectedAccount.Opportunities} for:item="opportunity">
+                    <li key={opportunity.Id} onclick={handleOpportunityClick}>
+                        {opportunity.Name}
+                    </li>
+                </template>
+            </ul>
+        </lightning-card>
+    </template>
+
+    <template if:true={selectedOpportunity}>
+        <lightning-card title="Opportunity Line Items">
+            <ul>
+                <template for:each={selectedOpportunity.OpportunityLineItems} for:item="oli">
+                    <li key={oli.Id}>
+                        {oli.Product2.Name} - Quantity: {oli.Quantity} - Unit Price: {oli.UnitPrice}
+                    </li>
+                </template>
+            </ul>
+        </lightning-card>
+    </template>
+</template>

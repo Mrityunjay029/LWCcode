@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Related contacts of account">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                label="Select an Account"
+                value={selectedAccountId}
+                options={accountOptions}
+                onchange={handleAccountChange}>
+            </lightning-combobox>
+        </div>
+        <template if:true={contacts}>
+            <lightning-datatable
+                key-field="Id"
+                data={contacts}
+                columns={contactColumns}
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

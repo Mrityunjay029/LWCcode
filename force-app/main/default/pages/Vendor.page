@@ -1,0 +1,30 @@
+<apex:page standardController="Contact" extensions="ContactController">
+    <apex:form id="theForm">
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Contact Information">
+                <apex:inputField value="{!Contact.TYPE__c}" id="typeField" onchange="showHideFields();"/>
+                <apex:inputField value="{!Contact.Vendor_PAN__c}" id="panField" styleClass="vendorFields"/>
+                <apex:inputField value="{!Contact.Vendor_GST__c}" id="gstField" styleClass="vendorFields"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    <script>
+        function showHideFields() {
+            var typeField = document.getElementById('{!$Component.theForm.typeField}');
+            var panField = document.getElementById('{!$Component.theForm.panField}');
+            var gstField = document.getElementById('{!$Component.theForm.gstField}');
+
+            if (typeField.value == 'Vendor') {
+                panField.style.display = 'inline';
+                gstField.style.display = 'inline';
+            } else {
+                panField.style.display = 'none';
+                gstField.style.display = 'none';
+            }
+        }
+
+        // Initial call to set visibility on page load
+        showHideFields();
+    </script>
+</apex:page>

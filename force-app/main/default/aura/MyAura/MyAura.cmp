@@ -1,0 +1,43 @@
+<aura:component controller="MyAuraController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="accounts" type="List" />
+    <aura:attribute name="selectedAccountId" type="String" />
+    <aura:attribute name="contacts" type="List" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <div class="slds-m-around_medium">
+        <lightning:select name="accountDropdown" label="Select an Account" onchange="{!c.handleAccountChange}">
+            <option value="">-- None --</option>
+            <aura:iteration items="{!v.accounts}" var="account">
+                <option value="{!account.Id}">{!account.Name}</option>
+            </aura:iteration>
+        </lightning:select>
+        
+        <aura:if isTrue="{!not(empty(v.contacts))}">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Contact Name">Contact Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Email">Email</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.contacts}" var="contact">
+                        <tr class="slds-hint-parent">
+                            <td data-label="Contact Name">
+                                <div class="slds-truncate" title="{!contact.Name}">{!contact.Name}</div>
+                            </td>
+                            <td data-label="Email">
+                                <div class="slds-truncate" title="{!contact.Email}">{!contact.Email}</div>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </aura:if>
+    </div>
+</aura:component>

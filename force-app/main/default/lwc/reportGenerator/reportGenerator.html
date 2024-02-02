@@ -1,0 +1,18 @@
+<template>
+    <lightning-card  title="Report" icon-name="standard:report">
+        <lightning-layout horizontal-align="space">
+            <lightning-layout-item size="4">
+                <lightning-input class="slds-m-horizontal_medium" type="date" label="Start Date" placeholder="01-Jan-2023" onchange={handleStartChange}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                <lightning-input class="slds-m-horizontal_medium slds-m-bottom_medium" type="date" label="End Date" placeholder="31-Dec-2023" onchange={handleEndChange}></lightning-input>
+            </lightning-layout-item>
+            <!-- <lightning-button class="slds-m-horizontal_medium" variant="brand" label="Generate Report" onclick={callOutput}></lightning-button> -->
+        </lightning-layout>
+    </lightning-card>
+    <template if:true={chartConfiguration}>
+        <lightning-card>
+            <c-bar-graph chart-config={chartConfiguration}></c-bar-graph>
+        </lightning-card>
+    </template>
+</template>

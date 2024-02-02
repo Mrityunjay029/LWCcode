@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Today's and Upcoming Birthdays">
+        <lightning-accordion class="example-accordion" allow-multiple-sections-open  active-section-name={activeSections}>
+            <lightning-accordion-section name="A" label="Today's B'Days">
+                <div class="slds-p-around_medium">
+                    <p class="slds-text-title_bold">Today's Birthdays:</p>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-text-title_caps">Name</th>
+                                <th class="slds-text-title_caps">Birthdate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={originalTodayBdays} for:item="birthday">
+                                <tr key={birthday.Id}>
+                                    <td><a onclick={openContact} data-contactid={birthday.Id}  class="slds-text-color_default slds-text-decoration_none">{birthday.Name}</a></td>
+                                    <td>{birthday.Birthdate}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-accordion-section>
+
+
+            <lightning-accordion-section name="B" label="Upcoming B'Days">
+                <div class="slds-p-around_medium">
+                    <p class="slds-text-title_bold">Upcoming Birthdays:</p>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-text-title_caps">Name</th>
+                                <th class="slds-text-title_caps">Birthdate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={originalUpcoming} for:item="birthday">
+                                <tr key={birthday.Id}>
+                                    <td><a onclick={openContact} data-contactid={birthday.Id}  class="slds-text-color_default slds-text-decoration_none">{birthday.Name}</a></td>
+                                    <td>{birthday.Birthdate}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+</template>

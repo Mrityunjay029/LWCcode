@@ -1,0 +1,20 @@
+<apex:page controller="EMICalculatorController">
+    <apex:form >
+        <apex:pageBlock title="Loan Calculator">
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="Loan Amount" value="{!loanAmount}" />
+                <apex:inputText label="Interest Rate (%)" value="{!interestRate}" />
+                <apex:inputText label="Loan Tenure (Months)" value="{!loanTenure}" />
+                <apex:commandButton action="{!calculateLoan}" reRender="res" value="{!calculate}" title="Calculate" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Results" id="res" >
+                <apex:outputText label="Loan EMI" value="{!loanEMI}" />
+                <apex:outputText label="Total Interest Payable" value="{!totalInterest}" />
+                <apex:outputText label="Total Payment (Principal + Interest)" value="{!totalPayment}" />
+                <apex:chart height="300" width="400" data="{!myPieChart}">
+                    <apex:pieSeries dataField="data" labelField="name"></apex:pieSeries>
+                </apex:chart>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

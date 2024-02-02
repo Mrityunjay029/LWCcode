@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name='childmes' type='string'/>
+    
+    <aura:handler name='trnEvent' event="c:TrainingEvent" action="{! c.myAction}"/>
+    
+    <p>Parent component </p><br/>
+    {! v.childmes }
+    
+    <c:ChildComponent/>
+</aura:component>

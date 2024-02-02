@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="PRACTICE 5" icon-name="standard:account">
+        <input type="search" value={MyVal} onchange={handleChange}>
+        <lightning-button
+        variant="brand"
+        label="Find Accounts"
+        onclick={handleClick}
+        >
+        </lightning-button>
+    </lightning-card>
+    <lightning-card title="All Accounts" icon-name="standard:account">
+        <lightning-datatable
+        columns={columns}
+        data={data}
+        key-field="id"
+        >
+        </lightning-datatable>
+    </lightning-card>
+</template>

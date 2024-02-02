@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="PRACTICE 3" icon-name="account">
+        <lightning-button
+        variant="brand"
+        label={Label}
+        onclick={handleClick}
+        ></lightning-button>
+    </lightning-card>
+    <template if:true={showTemplate}>
+        <lightning-card>
+            <p>The content is rendered</p>
+        </lightning-card>
+    </template>
+</template>

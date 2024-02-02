@@ -1,0 +1,61 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+            &nbsp;Accounts
+        </h3>
+        <div class="slds-card__body slds-m-left_medium slds-m-right_medium">
+            <lightning-combobox
+                label="Choose an account"
+                name="accountDropdown"
+                value={selectedAccountId}
+                options={accountOptions}
+                onchange={handleAccountChange}
+            ></lightning-combobox>
+        </div>
+    </lightning-card>
+    <template if:true={contactData.length}>
+        <table class="slds-table slds-table_bordered slds-m-top_medium">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={contactData} for:item="contact" for:index="index">
+                    <tr key={contact.Id}>
+                        <td>
+                            <input if:true={contact.inEdit} style="width:90px;" type="text" value={contact.FirstName} name="FirstName" />
+                            <template if:false={contact.inEdit}>{contact.FirstName}</template>
+                        </td>
+                        <td>
+                            <input if:true={contact.inEdit} style="width:90px;" type="text" value={contact.LastName} name="LastName" />
+                            <template if:false={contact.inEdit}>{contact.LastName}</template>
+                        </td>
+                        <td>
+                            <input if:true={contact.inEdit} style="width:100px;" type="text" value={contact.Phone} name="Phone" />
+                            <template if:false={contact.inEdit}>{contact.Phone}</template>
+                        </td>
+                        <td>
+                            <input if:true={contact.inEdit} style="width:150px;" type="text" value={contact.Email} name="Email" />
+                            <template if:false={contact.inEdit}>{contact.Email}</template>
+                        </td>
+                        <td>
+                            <lightning-button-icon class="slds-m-right_xxx-small" if:true={contact.inEdit} icon-name="utility:save" title="Save" onclick={handleSaveClick}></lightning-button-icon>
+                            <lightning-button-icon if:true={contact.inEdit} icon-name="utility:dash" title="Cancel" onclick={handleCancelClick}></lightning-button-icon>
+                            <lightning-button-icon class="slds-m-right_xx-large" if:false={contact.inEdit} icon-name="utility:edit" title="Edit" onclick={handleEditClick} itemid={index}></lightning-button-icon>
+                        </td>
+                        <td>
+                            <lightning-button-icon icon-name="utility:delete" title="Delete" onclick={handleDeleteClick} itemid={index}></lightning-button-icon>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+</template>

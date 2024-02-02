@@ -1,0 +1,31 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" 
+controller="Task28AugController" >
+	<aura:attribute name="accountList" type="Object[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.addAccount}"/>
+    <lightning:card title="Multiple Account Creation" iconName="standard:account" >
+        <table>
+            <thead>
+                <tr style="background-color: #D3D3D3; width: 100%">
+                    <th style="margin: 5px; padding-left:5px">Account Name</th>
+                    <th style="margin: 5px; padding-left:5px">Account Email</th>
+                    <th style="margin: 5px; padding-left:5px">Account Phone</th>
+                    <th style="margin: 5px; padding-left:5px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.accountList}" var="account" indexVar="index">
+                    <tr>
+                        <td style="padding: 5px"><ui:inputText value="{!account.Name}" aura:id="accountName"/></td>
+                        <td style="padding: 5px"><ui:inputText value="{!account.Email__c}" aura:id="accountEmail"/></td>
+                        <td style="padding: 5px"><ui:inputText value="{!account.Phone}" aura:id="accountPhone"/></td>
+                        <td style="padding: 5px">
+                            <lightning:buttonIcon iconName="utility:add" variant="container" onclick="{!c.addAccount}"/>
+                            <lightning:buttonIcon iconName="utility:delete" variant="container" onclick="{!c.deleteRow}" disabled="{!v.accountList.length == 1}" name="{!index}"/>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>    
+        <button class="slds-button slds-button_brand" onclick="{!c.save}" style="margin: 5px">Save</button>
+    </lightning:card>
+</aura:component>

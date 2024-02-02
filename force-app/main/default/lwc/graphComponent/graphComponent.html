@@ -1,0 +1,7 @@
+<template>
+    <lightning-card  variant="Brand"  title="Report" icon-name="standard:account">
+        <lightning-input type="date" variant="standard" name="Start Date" label="Start Date" onchange={handleChange}></lightning-input>
+        <lightning-input type="date" variant="standard" name="End Date" label="End Date" onchange={handleChange}></lightning-input>
+        <lightning-button variant="Brand" label="GenerateReport" title="Generate Report" onclick={handleClick}></lightning-button>
+    </lightning-card>
+</template>

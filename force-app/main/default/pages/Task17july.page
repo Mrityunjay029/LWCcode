@@ -1,0 +1,28 @@
+<apex:page StandardController="Campaign" showHeader="true" recordSetVar="Campaigns" tabStyle="Campaign" sidebar="true">
+    <apex:pageBlock >
+        <h1> {!Campaign.name} </h1>
+        <apex:pageBlockSection >
+            <apex:outputField value="{!Campaign.OwnerId}"/>
+            <apex:outputField value="{!Campaign.NumberOfLeads}"/>
+            <apex:outputField value="{!Campaign.name}"/>    
+            <apex:outputField value="{!Campaign.NumberOfConvertedLeads}"/>
+            <apex:outputField value="{!Campaign.IsActive}"/>    
+            <apex:outputField value="{!Campaign.NumberOfContacts}"/>
+            <apex:outputField value="{!Campaign.Type}"/>    
+            <apex:outputField value="{!Campaign.NumberOfResponses}"/>
+            <apex:outputField value="{!Campaign.Status}"/>    
+            <apex:outputField value="{!Campaign.NumberOfOpportunities}"/>
+            <apex:outputField value=" {!Campaign.StartDate}"/>    
+            <apex:outputField value="{!Campaign.AmountWonOpportunities}"/>
+            <apex:outputField value="{!Campaign.EndDate}"/>    
+            <apex:outputField value="{!Campaign.AmountAllOpportunities}"/>
+            <apex:outputField value="{!Campaign.ExpectedResponse}"/>    
+            <apex:outputField value="{!Campaign.AmountWonOpportunities}"/>
+            <apex:outputField value="{!Campaign.BudgetedCost}"/>    
+            <apex:outputField value="{!Campaign.ActualCost}"/>
+            <apex:outputField value="{!Campaign.ExpectedResponse}"/>    
+            <apex:outputField value="{!Campaign.HierarchyNumberSent}"/>
+            <apex:outputField value="{!Campaign.ParentId}"/>    
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
